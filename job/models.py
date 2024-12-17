@@ -11,9 +11,15 @@ class Job(models.Model):
     # location
     job_description = models.TextField(max_length= 1000)
     published_on = models.DateTimeField(auto_now= True)
-    vacancy = models.IntegerField(default= 1)
+    vacancy = models.CharField(max_length= 15, choices= JOB_TYPE)
     salary = models.IntegerField(default= 0)
-    category = models.CharField(max_length= 15, choices= JOB_TYPE)
+    category = models.ForeignKey('Category', on_delete= models.CASCADE)
     experience = models.IntegerField(default= 1)
+    def __str__(self):
+        return self.name
+    
+class Category(models.Model):
+    name = models.CharField(max_length= 25)
+    
     def __str__(self):
         return self.name
