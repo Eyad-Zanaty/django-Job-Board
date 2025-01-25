@@ -16,14 +16,13 @@
     {% endif %}
   {% endif %}
 
-  <form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
+  <form method="post" action="{% url 'login' %}" enctype="multipart/form-data">
     {% csrf_token %}
     <!-- Render the form -->
     {% bootstrap_form form %}
     
     <!-- Buttons -->
-    <button class="boxed-btn2 w-100" type="submit">Apply Now</button>
+    <input type="submit" value="login" class="boxed-btn3 w-100"/>
     <input type="hidden" name="next" value="{{ next }}">
   </form>
 
